@@ -74,3 +74,4 @@ Add CNAME record:
 - Name: blog
 - Value: YOUR_USERNAME.github.io
 - TTL: 3600
+test
