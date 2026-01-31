@@ -76,3 +76,4 @@ Add CNAME record:
 - TTL: 3600
 test
 test2
+test3
