@@ -1,0 +1,49 @@
+baseURL = "https://blog.eriteach.com/"
+languageCode = "en-us"
+title = "Eriteach - Microsoft Cloud Tech Blog"
+theme = "papermod"
+
+[params]
+  author = "Eriteach"
+  description = "Practical guides on Intune, Autopilot, Entra ID, Defender, and Purview"
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  defaultTheme = "auto"
+
+  [params.homeInfoParams]
+    Title = "Microsoft Cloud Tech Blog"
+    Content = "Practical solutions for Intune, Autopilot, Entra ID, Defender, and Purview"
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://linkedin.com/in/eriteach"
+
+  [[params.socialIcons]]
+    name = "x"
+    url = "https://x.com/eriteach"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 2
+  [[menu.main]]
+    name = "Archive"
+    url = "/archives/"
+    weight = 3
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    lineNos = false
+    style = "monokai"
