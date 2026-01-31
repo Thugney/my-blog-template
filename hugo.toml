@@ -25,6 +25,10 @@ theme = "papermod"
     name = "x"
     url = "https://x.com/eriteach"
 
+[[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/Thugney"
+
 [menu]
   [[menu.main]]
     name = "Home"
