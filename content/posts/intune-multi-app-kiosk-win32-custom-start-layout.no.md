@@ -4,7 +4,7 @@ date: 2026-02-02
 draft: true
 tags: ["intune", "kiosk", "windows-11", "win32-app"]
 categories: ["How-To"]
-summary: "Konfigurer en Windows multi-app kiosk med en tilpasset Win32-applikasjon og tilpasset Startmeny-layout - ikke bare en nettleser."
+summary: "Konfigurer en Windows multi-app kiosk med en tilpasset Win32-applikasjon - ikke bare en nettleser."
 ---
 
 ## Problemet
@@ -15,9 +15,20 @@ Alle kiosk-guider jeg fant handlet om nettleser-kiosker. Dette trengte noe annet
 
 ## Løsningen
 
-Intunes multi-app kioskmodus med:
-1. En Win32-app lagt til i kioskkonfigurasjonen
-2. En tilpasset Startmeny-layout XML for å feste appen
+Intunes multi-app kioskmodus med en tilpasset Startmeny-layout XML for å feste Win32-appen.
+
+## To tilnærminger
+
+Når du legger til apper i en multi-app kiosk har du to valg:
+
+| Metode | Fordeler | Ulemper |
+|--------|----------|---------|
+| **Add Win32 App** (direkte i profilen) | Enklere oppsett, ingen XML nødvendig | Begrenset kontroll over flis-layout |
+| **Custom Start Layout XML** | Full kontroll over flisplassering og størrelse | Krever AUMID og XML-kunnskap |
+
+**Viktig:** Du kan bruke én av disse metodene, ikke begge samtidig.
+
+Jeg valgte XML-metoden for mer kontroll over hvordan appen vises på Startmenyen.
 
 ## Forutsetninger
 
@@ -51,25 +62,23 @@ Get-StartApps | Where-Object { $_.Name -like "*Kodiak*" }
 | Target devices running Windows 10/11 in S mode | **No** |
 | User logon type | **Auto logon (Windows 10, version 1803 and later, or Windows 11)** |
 
-![Intune kioskkonfigurasjon med Kodiak Win32-app](/kodiak/image1.png)
+### Alternativ 1: Legg til Win32-app direkte
 
-### Legg til Win32-appen
+Den enkleste metoden - legg til appen rett i kioskprofilen:
 
 1. Under **Browsers and Applications**, klikk **Add Win32 app**
 2. Fyll inn app-detaljene:
    - **Name**: Kodiak (eller ditt appnavn)
-   - **Type**: Win32 App
-3. Klikk **Configured** under Settings for å sette app-stien
+   - **App type**: Win32 App
+   - **Path**: Sti til .exe-filen
 
-Appen vises i Applications-listen med flisestørrelse-valg.
+Appen vises automatisk på Startmenyen.
 
-## Lag Startmeny-layout XML
+### Alternativ 2: Custom Start Layout XML (anbefalt)
 
-Her blir det spesifikt. Du trenger en XML-fil som fester appen din til Startmenyen.
+For mer kontroll over flis-layout, bruk XML-metoden. Dette er hva jeg brukte.
 
-![Startmeny-layout XML-konfigurasjon](/kodiak/image.png)
-
-Her er XML-en jeg brukte:
+Sett **Use alternative Start layout** til **Yes** og lim inn denne XML-en:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -98,11 +107,6 @@ Erstatt `DIN-APP-AUMID-HER` med appens faktiske AUMID.
 | `Size="4x4"` | Stor flisstørrelse for enkel berøring |
 | `DesktopApplicationID` | AUMID-en til Win32-appen din |
 
-### Last opp XML-en
-
-1. Sett **Use alternative Start layout** til **Yes**
-2. Lim inn XML-en direkte eller last opp som fil
-
 ## Tilordne og deploy
 
 1. Klikk **Assignments**
@@ -113,6 +117,7 @@ Enheten vil restarte og gå inn i kioskmodus med auto-pålogging. Kun Startmenye
 
 ## Ting å passe på
 
+- **Velg én metode** - Du kan ikke kombinere "Add Win32 App" og custom XML i samme profil
 - **AUMID må være eksakt** - Én skrivefeil og appen vises ikke på Start. Dobbeltsjekk med `Get-StartApps`
 - **Appen må installeres først** - Win32-app-deploymenten må fullføres før kioskprofilen aktiveres. Bruk tilordningsfiltre eller avhengigheter
 - **Skrivertilgang** - Multi-app kioskmodus tillater skrivertilgang, i motsetning til single-app modus. Derfor bruker vi multi-app selv for én applikasjon

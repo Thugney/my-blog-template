@@ -4,7 +4,7 @@ date: 2026-02-02
 draft: true
 tags: ["intune", "kiosk", "windows-11", "win32-app"]
 categories: ["How-To"]
-summary: "Configure a Windows multi-app kiosk with a custom Win32 application and custom Start menu layout - not just a browser."
+summary: "Configure a Windows multi-app kiosk with a custom Win32 application - not just a browser."
 ---
 
 ## The Problem
@@ -15,9 +15,20 @@ Every kiosk guide I found was about browser kiosks. This needed something else.
 
 ## The Solution
 
-Intune's multi-app kiosk mode with:
-1. A Win32 app added to the kiosk configuration
-2. A custom Start menu layout XML to pin the app
+Intune's multi-app kiosk mode with a custom Start menu layout XML to pin the Win32 app.
+
+## Two Approaches
+
+When adding apps to a multi-app kiosk, you have two options:
+
+| Method | Pros | Cons |
+|--------|------|------|
+| **Add Win32 App** (directly in profile) | Simpler setup, no XML needed | Limited control over tile layout |
+| **Custom Start Layout XML** | Full control over tile placement and size | Requires AUMID and XML knowledge |
+
+**Important:** You can use one of these methods, not both at the same time.
+
+I chose the XML method for more control over how the app appears on the Start menu.
 
 ## Prerequisites
 
@@ -51,25 +62,23 @@ Get-StartApps | Where-Object { $_.Name -like "*Kodiak*" }
 | Target devices running Windows 10/11 in S mode | **No** |
 | User logon type | **Auto logon (Windows 10, version 1803 and later, or Windows 11)** |
 
-![Intune kiosk configuration with Kodiak Win32 app](/kodiak/image1.png)
+### Option 1: Add Win32 App Directly
 
-### Add the Win32 App
+The simplest method - add the app directly in the kiosk profile:
 
 1. Under **Browsers and Applications**, click **Add Win32 app**
 2. Enter the app details:
    - **Name**: Kodiak (or your app name)
-   - **Type**: Win32 App
-3. Click **Configured** under Settings to set the app path
+   - **App type**: Win32 App
+   - **Path**: Path to the .exe file
 
-The app appears in the Applications list with tile size options.
+The app appears automatically on the Start menu.
 
-## Create the Start Menu Layout XML
+### Option 2: Custom Start Layout XML (Recommended)
 
-You need an XML file to pin the app to Start.
+For more control over tile layout, use the XML method. This is what I used.
 
-![Start menu layout XML configuration](/kodiak/image.png)
-
-Here's the XML I used:
+Set **Use alternative Start layout** to **Yes** and paste this XML:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -78,7 +87,7 @@ Here's the XML I used:
   <DefaultLayoutOverride>
     <StartLayoutCollection>
       <defaultlayout:StartLayout GroupCellWidth="6">
-        <start:Group Name="Bibliotek" xmlns:start="http://schemas.microsoft.com/Start/2014/StartLayout">
+        <start:Group Name="Library" xmlns:start="http://schemas.microsoft.com/Start/2014/StartLayout">
           <start:DesktopApplicationTile Size="4x4" Column="0" Row="0" DesktopApplicationID="YOUR-APP-AUMID-HERE" />
         </start:Group>
       </defaultlayout:StartLayout>
@@ -94,14 +103,9 @@ Replace `YOUR-APP-AUMID-HERE` with your app's actual AUMID.
 | Element | Purpose |
 |---------|---------|
 | `StartTileGroupCellWidth="6"` | Width of the Start menu tile group |
-| `Group Name="Bibliotek"` | The group name shown on Start (I used "Bibliotek" for library) |
+| `Group Name="Library"` | The group name shown on Start |
 | `Size="4x4"` | Large tile size for easy touch |
 | `DesktopApplicationID` | The AUMID of your Win32 app |
-
-### Upload the XML
-
-1. Set **Use alternative Start layout** to **Yes**
-2. Paste the XML directly or upload as a file
 
 ## Assign and Deploy
 
@@ -109,10 +113,11 @@ Replace `YOUR-APP-AUMID-HERE` with your app's actual AUMID.
 2. Add the device group containing your kiosk devices
 3. Review and create
 
-Device reboots, auto-logs in, and you only see the Start menu with Kodiak.
+Device reboots, auto-logs in, and you only see the Start menu with your pinned app.
 
 ## What to Watch Out For
 
+- **Choose one method** - You cannot combine "Add Win32 App" and custom XML in the same profile
 - **AUMID must be exact** - One typo and the app won't appear on Start. Double-check with `Get-StartApps`
 - **App must be installed first** - The Win32 app deployment must complete before the kiosk profile applies. Use assignment filters or dependencies
 - **Printer access** - Multi-app kiosk mode allows printer access, unlike single-app mode. That's why we use multi-app even for one application
