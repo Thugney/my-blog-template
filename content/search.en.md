@@ -2,5 +2,4 @@
 title: "Search"
 layout: "search"
 placeholder: "Search posts..."
-summary: "Search all posts"
 ---

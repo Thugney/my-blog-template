@@ -1,5 +1,5 @@
 ---
-title: "Search"
+title: "Søk"
 layout: "search"
-placeholder: "Search posts..."
+placeholder: "Søk i innlegg..."
 ---

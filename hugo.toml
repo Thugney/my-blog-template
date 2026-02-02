@@ -15,28 +15,20 @@ defaultContentLanguageInSubdir = false
       description = "Practical solutions for Intune, Autopilot, Entra ID, Defender, and Purview"
     [[languages.en.menu.main]]
       name = "Home"
-      url = "/"
+      url = "/en/"
       weight = 1
     [[languages.en.menu.main]]
-      name = "Categories"
-      url = "/categories/"
+      name = "Topics"
+      url = "/en/tags/"
       weight = 2
     [[languages.en.menu.main]]
-      name = "Tags"
-      url = "/tags/"
+      name = "Search"
+      url = "/en/search/"
       weight = 3
     [[languages.en.menu.main]]
-      name = "Archive"
-      url = "/archives/"
-      weight = 4
-    [[languages.en.menu.main]]
-      name = "Search"
-      url = "/search/"
-      weight = 5
-    [[languages.en.menu.main]]
       name = "About"
-      url = "/about/"
-      weight = 6
+      url = "/en/about/"
+      weight = 4
 
   [languages.no]
     languageName = "Norsk"
@@ -46,28 +38,20 @@ defaultContentLanguageInSubdir = false
       description = "Praktiske løsninger for Intune, Autopilot, Entra ID, Defender og Purview"
     [[languages.no.menu.main]]
       name = "Hjem"
-      url = "/no/"
+      url = "/"
       weight = 1
     [[languages.no.menu.main]]
-      name = "Kategorier"
-      url = "/no/categories/"
+      name = "Emner"
+      url = "/tags/"
       weight = 2
     [[languages.no.menu.main]]
-      name = "Emner"
-      url = "/no/tags/"
+      name = "Søk"
+      url = "/search/"
       weight = 3
     [[languages.no.menu.main]]
-      name = "Arkiv"
-      url = "/no/archives/"
-      weight = 4
-    [[languages.no.menu.main]]
-      name = "Søk"
-      url = "/no/search/"
-      weight = 5
-    [[languages.no.menu.main]]
       name = "Om"
-      url = "/no/about/"
-      weight = 6
+      url = "/about/"
+      weight = 4
 
 [pagination]
 pagerSize = 5
@@ -85,6 +69,12 @@ disableThemeToggle = false
 ShowAllPagesInArchive = true
 ShowFullTextinRSS = true
 displayFullLangName = true
+
+# Favicon
+[params.assets]
+favicon = "favicon.png"
+favicon16x16 = "favicon.png"
+favicon32x32 = "favicon.png"
 
 # SEO - Default image for social sharing
 images = ["og-default.png"]
