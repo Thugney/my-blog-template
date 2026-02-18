@@ -13,6 +13,20 @@ defaultContentLanguageInSubdir = false
     weight = 1
     [languages.en.params]
       description = "Practical solutions for Intune, Autopilot, Entra ID, Defender, and Purview"
+      [languages.en.params.profileMode]
+        enabled = true
+        title = "Robel Mehari"
+        subtitle = "Microsoft 365 Security Specialist · Modum Kommune — Practical guides on Intune, Defender, Entra ID, Autopilot, and Purview."
+        imageUrl = "images/robel-mehari.jpg"
+        imageWidth = 150
+        imageHeight = 150
+        imageTitle = "Robel Mehari"
+        [[languages.en.params.profileMode.buttons]]
+          name = "Posts"
+          url = "/en/posts/"
+        [[languages.en.params.profileMode.buttons]]
+          name = "About"
+          url = "/en/about/"
     [[languages.en.menu.main]]
       name = "Home"
       url = "/en/"
@@ -36,6 +50,20 @@ defaultContentLanguageInSubdir = false
     weight = 2
     [languages.no.params]
       description = "Praktiske løsninger for Intune, Autopilot, Entra ID, Defender og Purview"
+      [languages.no.params.profileMode]
+        enabled = true
+        title = "Robel Mehari"
+        subtitle = "Microsoft 365 Security Specialist · Modum Kommune — Praktiske guider for Intune, Defender, Entra ID, Autopilot og Purview."
+        imageUrl = "images/robel-mehari.jpg"
+        imageWidth = 150
+        imageHeight = 150
+        imageTitle = "Robel Mehari"
+        [[languages.no.params.profileMode.buttons]]
+          name = "Innlegg"
+          url = "/posts/"
+        [[languages.no.params.profileMode.buttons]]
+          name = "Om"
+          url = "/about/"
     [[languages.no.menu.main]]
       name = "Hjem"
       url = "/"
@@ -57,18 +85,42 @@ defaultContentLanguageInSubdir = false
 pagerSize = 5
 
 [params]
-author = "Robel M."
+author = "Robel Mehari"
 env = "production"
+mainSections = ["posts"]
 ShowReadingTime = true
 ShowShareButtons = true
 ShowPostNavLinks = true
 ShowBreadCrumbs = true
 ShowCodeCopyButtons = true
+ShowToc = true
+TocOpen = false
 defaultTheme = "auto"
 disableThemeToggle = false
 ShowAllPagesInArchive = true
 ShowFullTextinRSS = true
 displayFullLangName = true
+
+# Social Icons
+[[params.socialIcons]]
+  name = "linkedin"
+  url = "https://linkedin.com/in/eriteach"
+
+[[params.socialIcons]]
+  name = "x"
+  url = "https://x.com/eriteach"
+
+[[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/Thugney"
+
+[[params.socialIcons]]
+  name = "youtube"
+  url = "https://youtube.com/@eriteach"
+
+[[params.socialIcons]]
+  name = "rss"
+  url = "/index.xml"
 
 # Favicon
 [params.assets]

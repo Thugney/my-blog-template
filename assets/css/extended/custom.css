@@ -1,0 +1,277 @@
+/* ============================================================
+   TEAL COLOR SCHEME - LIGHT MODE
+   ============================================================ */
+:root {
+    --theme: #ffffff;
+    --entry: #ffffff;
+    --primary: #1a2e2e;
+    --secondary: #4a7c7c;
+    --tertiary: #d0e8e8;
+    --content: #1f3333;
+    --code-block-bg: #1c2d2d;
+    --code-bg: #eaf4f4;
+    --border: #c8e0e0;
+    --accent: #0d9488;
+    --accent-hover: #0f766e;
+}
+
+/* ============================================================
+   TEAL COLOR SCHEME - DARK MODE
+   ============================================================ */
+:root[data-theme="dark"] {
+    --theme: #0f1f1f;
+    --entry: #1a2e2e;
+    --primary: #d4eaea;
+    --secondary: #7ab8b8;
+    --tertiary: #2a4040;
+    --content: #c0dcdc;
+    --code-block-bg: #1a2e2e;
+    --code-bg: #243838;
+    --border: #2a4040;
+    --accent: #2dd4bf;
+    --accent-hover: #5eead4;
+}
+
+/* ============================================================
+   ACCENT COLORS ON INTERACTIVE ELEMENTS
+   ============================================================ */
+.post-content a,
+.post-tags a,
+.breadcrumbs a {
+    color: var(--accent);
+}
+
+.post-content a:hover,
+.breadcrumbs a:hover {
+    color: var(--accent-hover);
+}
+
+.button {
+    background: var(--tertiary);
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.button:hover {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+.social-icons a:hover svg {
+    fill: var(--accent);
+}
+
+/* ============================================================
+   COLLAPSIBLE DETAILS STYLING
+   ============================================================ */
+details {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--code-bg);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+}
+
+details summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.5rem;
+    margin: -1rem;
+    margin-bottom: 0;
+}
+
+details:not([open]) summary {
+    margin-bottom: -1rem;
+}
+
+/* ============================================================
+   SCROLLABLE CODE BLOCKS
+   ============================================================ */
+pre {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+details pre {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.footer a {
+    color: var(--secondary);
+}
+
+.footer a:hover {
+    color: var(--accent);
+}
+
+/* ============================================================
+   POST LIST CARDS
+   ============================================================ */
+.post-entry {
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.post-entry:hover {
+    transform: translateX(5px);
+    border-color: var(--accent);
+}
+
+/* ============================================================
+   TAG AND CATEGORY BADGES
+   ============================================================ */
+.post-tags a {
+    background: var(--code-bg);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.post-tags a:hover {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+/* ============================================================
+   SEARCH INPUT
+   ============================================================ */
+#searchInput {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid var(--border);
+    background: var(--code-bg);
+    color: var(--primary);
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* ============================================================
+   PAGINATION
+   ============================================================ */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.page-item a {
+    padding: 0.5rem 1rem;
+    background: var(--code-bg);
+    border-radius: 4px;
+}
+
+.page-item.active a {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+/* ============================================================
+   CSS-GENERATED COVER IMAGES
+   ============================================================ */
+.entry-cover-css {
+    height: 180px;
+    border-radius: var(--radius);
+    margin-bottom: var(--gap);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.post-single .entry-cover-css {
+    height: 240px;
+    font-size: 3rem;
+}
+
+/* Intune - blue to teal */
+.cover-intune {
+    background: linear-gradient(135deg, #0078d4 0%, #0d9488 100%);
+}
+.cover-intune::before {
+    content: "Intune";
+}
+
+/* Defender - red gradient */
+.cover-defender {
+    background: linear-gradient(135deg, #c0392b 0%, #8e1a11 100%);
+}
+.cover-defender::before {
+    content: "Defender";
+}
+
+/* Entra ID - purple to blue */
+.cover-entra-id {
+    background: linear-gradient(135deg, #5c2d91 0%, #0078d4 100%);
+}
+.cover-entra-id::before {
+    content: "Entra ID";
+}
+
+/* Autopilot - green to teal */
+.cover-autopilot {
+    background: linear-gradient(135deg, #107c10 0%, #0d9488 100%);
+}
+.cover-autopilot::before {
+    content: "Autopilot";
+}
+
+/* Purview - deep purple */
+.cover-purview {
+    background: linear-gradient(135deg, #742774 0%, #5c2d91 100%);
+}
+.cover-purview::before {
+    content: "Purview";
+}
+
+/* Windows 11 - slate blue */
+.cover-windows-11 {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2b5797 100%);
+}
+.cover-windows-11::before {
+    content: "Windows 11";
+}
+
+/* Kiosk - dark teal */
+.cover-kiosk {
+    background: linear-gradient(135deg, #005a4e 0%, #0d9488 100%);
+}
+.cover-kiosk::before {
+    content: "Kiosk";
+}
+
+/* PowerShell - dark blue */
+.cover-powershell {
+    background: linear-gradient(135deg, #012456 0%, #2b5797 100%);
+}
+.cover-powershell::before {
+    content: "PowerShell";
+}
+
+/* Default fallback - teal brand */
+.cover-default {
+    background: linear-gradient(135deg, #0d9488 0%, #1a2e2e 100%);
+}
