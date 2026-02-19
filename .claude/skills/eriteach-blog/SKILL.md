@@ -144,40 +144,61 @@ Never paste raw code without fences. Never use inline code for multi-line script
 
 ## GitHub Scripts Repository
 
-Full scripts live in: `https://github.com/Thugney/eriteach-scripts.git`
+Full scripts live in: `https://github.com/Thugney/eriteach-scripts`
 
-Local clone (if already cloned): `J:\Projects\eriteach-scripts-temp\`
+Local clone: `J:\Projects\eriteach-scripts-temp\`
 
 ### Folder Structure
 
 ```
 eriteach-scripts/
-├── README.md
 ├── intune/
-│   ├── remediations/      # Proactive remediation scripts (detection + remediation pairs)
-│   └── win32/             # Win32 app scripts (detection + install pairs)
-├── deployment/            # OS deployment and imaging scripts
-├── autopilot/             # Autopilot-related scripts
-└── graph/                 # Graph API scripts
+│   ├── remediations/     # Proactive remediation scripts (detection + remediation pairs)
+│   └── win32/            # Win32 app scripts (detection + install pairs)
+├── deployment/           # OS deployment and imaging scripts
+├── autopilot/            # Autopilot-related scripts
+└── graph/                # Microsoft Graph API scripts
 ```
+
+### Current Scripts in Repo
+
+When adding new scripts, update the README tables to match this format (with clickable links):
+
+**Intune Remediations** (`intune/remediations/`):
+| Script | Purpose |
+|--------|---------|
+| [`script-name-detection.ps1`](intune/remediations/script-name-detection.ps1) | Description |
+| [`script-name-remediation.ps1`](intune/remediations/script-name-remediation.ps1) | Description |
+
+**Intune Win32 Apps** (`intune/win32/`):
+| Script | Purpose |
+|--------|---------|
+| [`Detect-Feature.ps1`](intune/win32/Detect-Feature.ps1) | Win32 detection - description |
+| [`Install-Feature.ps1`](intune/win32/Install-Feature.ps1) | Win32 install - description |
+
+**Deployment** (`deployment/`):
+| Script | Purpose |
+|--------|---------|
+| [`script-name.ps1`](deployment/script-name.ps1) | Description |
 
 ### Adding Scripts to GitHub
 
 When a blog post includes scripts, push the full versions to GitHub.
 
-**If the repo is already cloned locally** at `J:\Projects\eriteach-scripts-temp\`:
-1. Create the script file in the appropriate folder
-2. Update README.md with the new script in the table
-3. Commit and push directly — do NOT ask unnecessary questions, just push
+**Steps:**
+1. Create the script file in the appropriate folder with proper header
+2. Update `README.md` — add the new script to the correct table with clickable link
+3. Commit with descriptive message
+4. Push directly — do NOT ask unnecessary questions
 
-**If the repo is NOT cloned locally:**
-1. Clone to temp: `git clone https://github.com/Thugney/eriteach-scripts.git "J:\Projects\eriteach-scripts-temp"`
-2. Create script files, update README
-3. Commit and push
+**If repo is NOT cloned locally:**
+```bash
+git clone https://github.com/Thugney/eriteach-scripts.git "J:\Projects\eriteach-scripts-temp"
+```
 
 ### Script Header Format
 
-Every script MUST have this banner header followed by the help block:
+**REQUIRED:** Every script MUST have this exact banner header followed by the help block:
 
 ```powershell
 # ============================================================================
@@ -211,6 +232,16 @@ $response = Invoke-RestMethod -Uri "https://api.example.com"
 
 # Full script: https://github.com/Thugney/eriteach-scripts/blob/main/folder/script-name.ps1
 ```
+
+### README Format
+
+The repo README follows this structure:
+- Badges at top (GitHub, Blog, YouTube, LinkedIn, License)
+- About section with author context
+- Structure tree
+- Scripts tables with clickable links per category
+- Usage section showing script header format
+- Related links and License
 
 ## Intune Deep Links
 
