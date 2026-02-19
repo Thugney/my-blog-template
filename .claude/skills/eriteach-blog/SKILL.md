@@ -157,6 +157,8 @@ eriteach-scripts/
 │   └── win32/            # Win32 app scripts (detection + install pairs)
 ├── deployment/           # OS deployment and imaging scripts
 ├── autopilot/            # Autopilot-related scripts
+├── defender/             # Microsoft Defender scripts
+├── purview/              # Microsoft Purview scripts
 └── graph/                # Microsoft Graph API scripts
 ```
 
