@@ -17,6 +17,8 @@ Write practical, scenario-based blog posts for blog.eriteach.com.
 - Runs Eriteach YouTube channel (20,000+ subscribers)
 - Works in kommune (municipality) environment with multiple schools
 
+
+
 ## Voice & Style
 
 - **First person** - Use "I" and "we" - these are the author's real experiences and solutions. "I ran into this problem", "We had devices that...", "Then it hit me..."
@@ -26,6 +28,8 @@ Write practical, scenario-based blog posts for blog.eriteach.com.
 - **Not verbose** - Say it once, say it clearly, move on
 - **No guru tone** - No "Let's dive in", "In this blog post we will", "As you may know"
 - **Norwegian context** - Municipality environment, multiple schools, student devices, school consultants handle local IT
+- **Use Deeplink** - Use deeplink when possible and alsways add microsoft related topics, confirm the link/blog from microsoft actually is related to what is about to be a blog post.
+- **Security** - When writing post never expose critical info given by user for example purposes alsways clarify
 
 ## Blog Focus
 
@@ -35,6 +39,7 @@ Microsoft cloud tech:
 - **Entra ID** - Identity, conditional access, authentication
 - **Defender** - Security, threat protection
 - **Purview** - Data governance, sensitivity labels
+- **Automation** - Proactive remediation, Poewrautomate
 
 ## Post Structure
 
@@ -50,7 +55,7 @@ summary: "One sentence - what you'll learn"
 
 ## The Problem
 
-What went wrong. Be specific. Use real-world scenario.
+What went wrong. Be specific. Use from users input. Once the user describe  the issue and the solutions, you write the blog as if the author is writing them.
 
 Example: "A user gets a new laptop. Autopilot starts, then sits at 'Identifying' for 45 minutes before timing out."
 
@@ -141,57 +146,47 @@ Never paste raw code without fences. Never use inline code for multi-line script
 
 Full scripts live in: `https://github.com/Thugney/eriteach-scripts.git`
 
+Local clone (if already cloned): `J:\Projects\eriteach-scripts-temp\`
+
 ### Folder Structure
 
 ```
 eriteach-scripts/
 ├── README.md
 ├── intune/
-│   └── remediations/      # Proactive remediation scripts
+│   ├── remediations/      # Proactive remediation scripts (detection + remediation pairs)
+│   └── win32/             # Win32 app scripts (detection + install pairs)
+├── deployment/            # OS deployment and imaging scripts
 ├── autopilot/             # Autopilot-related scripts
 └── graph/                 # Graph API scripts
 ```
 
 ### Adding Scripts to GitHub
 
-When a blog post includes scripts, push the full versions to GitHub:
+When a blog post includes scripts, push the full versions to GitHub.
 
-1. Clone the repo to temp:
-   ```bash
-   git clone https://github.com/Thugney/eriteach-scripts.git "$TEMP/eriteach-scripts-check"
-   ```
+**If the repo is already cloned locally** at `J:\Projects\eriteach-scripts-temp\`:
+1. Create the script file in the appropriate folder
+2. Update README.md with the new script in the table
+3. Commit and push directly — do NOT ask unnecessary questions, just push
 
-2. Create the script file in the appropriate folder with proper header:
-   ```powershell
-   <#
-   .SYNOPSIS
-   Short description of what the script does.
-
-   .DESCRIPTION
-   Detailed explanation of how it works.
-
-   .NOTES
-   Author: Eriteach
-   Version: 1.0
-   Intune Run Context: System | User
-   #>
-   ```
-
-3. Update README.md with the new script in the table
-
-4. Commit and push:
-   ```bash
-   cd "$TEMP/eriteach-scripts-check"
-   git add .
-   git commit -m "Add script-name for purpose"
-   git push
-   ```
+**If the repo is NOT cloned locally:**
+1. Clone to temp: `git clone https://github.com/Thugney/eriteach-scripts.git "J:\Projects\eriteach-scripts-temp"`
+2. Create script files, update README
+3. Commit and push
 
 ### Script Header Format
 
-Every script MUST have this header:
+Every script MUST have this banner header followed by the help block:
 
 ```powershell
+# ============================================================================
+# Eriteach Scripts
+# Author: Robel (https://github.com/Thugney)
+# Repository: https://github.com/Thugney/eriteach-scripts
+# License: MIT
+# ============================================================================
+
 <#
 .SYNOPSIS
 One line - what it does.
@@ -208,7 +203,7 @@ Intune Run Context: System | User
 
 ### Linking in Blog Posts
 
-In blog posts, show a snippet with key logic, then link to full script:
+In blog posts, show ONLY a short snippet with key logic, then link to the full script on GitHub. NEVER include full scripts inline in blog posts.
 
 ```powershell
 # Key logic here (condensed)
@@ -273,10 +268,12 @@ Filename: `kebab-case-describing-topic.md`
 Example: `autopilot-esp-timeout-win32-detection.md`
 
 **IMPORTANT: Always create both English AND Norwegian versions:**
-- `my-post.md` - English version
+- `my-post.en.md` - English version
 - `my-post.no.md` - Norwegian version
 
-Both files go in the same folder. Hugo links them automatically.
+Both files go in the same folder. Hugo links them automatically by filename prefix.
+
+**Tag ordering matters** — put the most relevant technology tag FIRST, as it determines the CSS cover gradient color (e.g., `tags: ["intune", "powershell"]` gives an Intune blue-teal cover).
 
 ## Workflow
 
@@ -293,6 +290,90 @@ Both files go in the same folder. Hugo links them automatically.
    - Update repo README with new scripts
    - Commit and push to GitHub
    - Ensure blog post links to the GitHub scripts
+
+## Hosting & Deployment
+
+The blog is hosted on **Netlify** (free tier), NOT GitHub Pages.
+
+- **Repo**: `https://github.com/Thugney/eriteach-blog.git` (PRIVATE repo)
+- **Netlify config**: `netlify.toml` in repo root
+- **Auto-deploy**: Every push to `main` triggers a Netlify build
+- **Custom domain**: `blog.eriteach.com`
+- **Build command**: `hugo --gc --minify`
+- **Hugo version**: 0.155.1 (extended)
+
+### Publishing Workflow
+
+1. Write post in `content/drafts/` with `draft: true`
+2. When ready to publish, move to `content/posts/` and set `draft: false`
+3. Commit and push to `main` — Netlify auto-deploys within ~1 minute
+4. NEVER use GitHub Pages or GitHub Actions for deployment
+
+## Design System
+
+### Theme & Colors
+
+- **Theme**: PaperMod (git submodule at `themes/papermod/`)
+- **Color scheme**: Teal/modern
+  - Light mode accent: `#0d9488`
+  - Dark mode accent: `#2dd4bf`
+  - Theme follows OS preference (`defaultTheme = "auto"`)
+
+### Custom CSS Location
+
+**IMPORTANT**: Custom CSS lives at `assets/css/extended/custom.css` (site root), NOT inside the theme directory. Hugo site-root assets take priority over theme assets.
+
+NEVER put custom CSS in `themes/papermod/assets/css/extended/` — it will be lost on theme update.
+
+### Homepage
+
+Uses **Profile Mode** with bilingual config:
+- Profile photo: `static/images/robel-mehari.jpg`
+- Social icons: LinkedIn, X, GitHub, YouTube, RSS (configured via `[[params.socialIcons]]`)
+- Buttons: language-specific (EN: Posts/About, NO: Innlegg/Om)
+- ProfileMode is defined per-language in `hugo.toml` under `[languages.en.params.profileMode]` and `[languages.no.params.profileMode]`
+
+### Cover Images
+
+Posts use **CSS-generated gradient covers** based on the first tag — no image files needed.
+
+The cover partial at `layouts/partials/cover.html` maps the first tag to a gradient class:
+
+| First Tag | Gradient | Class |
+|-----------|----------|-------|
+| intune | Blue to teal | `cover-intune` |
+| defender | Red | `cover-defender` |
+| entra-id | Purple to blue | `cover-entra-id` |
+| autopilot | Green to teal | `cover-autopilot` |
+| purview | Deep purple | `cover-purview` |
+| windows-11 | Slate blue | `cover-windows-11` |
+| kiosk | Dark teal | `cover-kiosk` |
+| powershell | Dark blue | `cover-powershell` |
+| (anything else) | Teal brand | `cover-default` |
+
+**Order your tags deliberately** — the first tag determines the cover color.
+
+If a post has `cover.image` in front matter, the real image takes priority over CSS covers.
+
+### Footer
+
+The footer (`layouts/partials/footer.html`) shows copyright + PaperMod's SVG social icons from the `socialIcons` config.
+
+### Table of Contents
+
+Enabled globally (`ShowToc = true`, `TocOpen = false`). Can be disabled per-post with `ShowToc: false` in front matter.
+
+### Layout Overrides
+
+Only these layout files override PaperMod defaults:
+- `layouts/partials/footer.html` — custom footer with social icons
+- `layouts/partials/cover.html` — CSS-generated covers fallback
+
+Do NOT create unnecessary layout overrides. Use hugo.toml config when possible.
+
+### OG Image
+
+Default social sharing image: `static/og-default.png` (1200x630, teal gradient with "Eriteach" branding).
 
 ## Example - What NOT to Write
 
