@@ -34,7 +34,7 @@ Lager rengjorte Windows 11 ISO-er per utgave (Education og Enterprise) med:
 - 119+ bloatware-apper fjernet på image-nivå
 - HP WiFi-drivere injisert (Realtek, Intel AX211)
 - Registry-justeringer (deaktiver Copilot, Widgets, telemetri)
-- Autounattend.xml som hopper over OOBE-skjermer
+- Autopilot-kompatibel autounattend.xml (hopper over ikke-essensielle skjermer, bevarer registreringsflyt)
 
 ### 2. Win32-app - For Intune-administrerte tilbakestillinger
 
@@ -206,13 +206,32 @@ Noen driverpakker er utgavespesifikke. HP ProBook G10-pakken går til Education 
 }
 ```
 
+### Autounattend.xml blokkerte Autopilot
+
+Min første autounattend.xml hadde disse innstillingene som fullstendig omgikk Autopilot:
+
+```xml
+<!-- Disse innstillingene ØDELEGGER Autopilot - ikke bruk dem! -->
+<HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+<SkipMachineOOBE>true</SkipMachineOOBE>
+<SkipUserOOBE>true</SkipUserOOBE>
+```
+
+Løsningen: `HideOnlineAccountScreens` må være `false` fordi Autopilot brukerdrevet registrering trenger Entra ID-påloggingsskjermen. `SkipMachineOOBE` og `SkipUserOOBE` må fjernes helt fordi Autopilot-registrering skjer under OOBE - hopp over OOBE, hopp over Autopilot.
+
+Det du KAN trygt hoppe over:
+- `HideEULAPage` - Lisensavtale
+- `HideOEMRegistrationScreen` - OEM-registrering
+- `HideLocalAccountScreen` - Lokal kontoopprettelse (tvinger Entra ID)
+- `ProtectYourPC` - Personverninnstillinger (Intune håndterer dette)
+
 ## Resultatet
 
 **For USB-tilbakestillinger:**
 1. Skolekonsulent starter fra vår egendefinerte USB
 2. Windows installeres med fungerende WiFi
 3. Ingen bloatware - ren startmeny
-4. OOBE hopper rett til Autopilot
+4. OOBE går direkte til Autopilot-registrering
 5. Enhet klar samme dag
 
 **For Intune-tilbakestillinger:**

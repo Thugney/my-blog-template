@@ -36,7 +36,7 @@ Creates debloated Windows 11 ISOs per edition (Education and Enterprise) with:
 - 119+ bloatware apps removed at image level
 - HP WiFi drivers injected (Realtek, Intel AX211)
 - Registry tweaks applied (disable Copilot, Widgets, telemetry)
-- Autounattend.xml that skips OOBE screens
+- Autopilot-compatible autounattend.xml (skips non-essential screens, preserves enrollment flow)
 
 ### 2. Win32 App - For Intune-Managed Resets
 
@@ -208,13 +208,32 @@ Some driver packs are edition-specific. HP ProBook G10 pack goes to Education (s
 }
 ```
 
+### Autounattend.xml Blocking Autopilot
+
+My initial autounattend.xml had these settings that completely bypassed Autopilot:
+
+```xml
+<!-- These settings BREAK Autopilot - don't use them! -->
+<HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+<SkipMachineOOBE>true</SkipMachineOOBE>
+<SkipUserOOBE>true</SkipUserOOBE>
+```
+
+The fix: `HideOnlineAccountScreens` must be `false` because Autopilot user-driven enrollment needs the Entra ID sign-in screen. `SkipMachineOOBE` and `SkipUserOOBE` must be removed entirely because Autopilot enrollment happens during OOBE - skip OOBE, skip Autopilot.
+
+What you CAN safely skip:
+- `HideEULAPage` - License agreement
+- `HideOEMRegistrationScreen` - OEM registration
+- `HideLocalAccountScreen` - Local account creation (forces Entra ID)
+- `ProtectYourPC` - Privacy settings (Intune handles this)
+
 ## The Result
 
 **For USB resets:**
 1. School consultant boots from our custom USB
 2. Windows installs with WiFi working
 3. No bloatware - clean Start menu
-4. OOBE skips straight to Autopilot
+4. OOBE flows directly into Autopilot enrollment
 5. Device ready same day
 
 **For Intune resets:**
