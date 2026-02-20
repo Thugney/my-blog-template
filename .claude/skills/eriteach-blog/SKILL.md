@@ -155,12 +155,10 @@ eriteach-scripts/
 ├── intune/
 │   ├── remediations/     # Proactive remediation scripts (detection + remediation pairs)
 │   └── win32/            # Win32 app scripts (detection + install pairs)
-├── deployment/           # OS deployment and imaging scripts
-├── autopilot/            # Autopilot-related scripts
-├── defender/             # Microsoft Defender scripts
-├── purview/              # Microsoft Purview scripts
-└── graph/                # Microsoft Graph API scripts
+└── deployment/           # OS deployment and imaging scripts
 ```
+
+*Create new folders (autopilot, defender, purview, graph) when adding scripts for those areas.*
 
 ### Current Scripts in Repo
 
@@ -407,6 +405,67 @@ Do NOT create unnecessary layout overrides. Use hugo.toml config when possible.
 ### OG Image
 
 Default social sharing image: `static/og-default.png` (1200x630, teal gradient with "Eriteach" branding).
+
+## SEO Requirements
+
+**Every blog post MUST include SEO-optimized frontmatter:**
+
+```yaml
+---
+title: "Clear, Keyword-Rich Title"
+date: YYYY-MM-DD
+draft: true
+tags: ["primary-tech", "secondary-tech", "action-word"]
+categories: ["How-To" | "Troubleshooting" | "Quick-Tip"]
+summary: "One sentence for list pages"
+description: "SEO description (150-160 chars) - appears in Google search results"
+keywords: ["keyword 1", "keyword 2", "long-tail keyword phrase"]
+---
+```
+
+**SEO Checklist:**
+- `description` - Unique, action-oriented, includes primary keyword (150-160 chars)
+- `keywords` - 5-9 relevant keywords including long-tail phrases
+- `tags` - Primary technology FIRST (determines cover color), then secondary tags
+- Title should include the main keyword naturally
+
+**Example SEO frontmatter:**
+```yaml
+description: "Step-by-step guide to creating debloated Windows 11 ISOs with 119+ apps removed and WiFi drivers injected for Autopilot deployment."
+keywords: ["debloated Windows 11", "Windows ISO customization", "remove bloatware", "Autopilot deployment", "Intune Win32 app"]
+```
+
+**Site-wide SEO (already configured in hugo.toml):**
+- Site keywords targeting: Intune, Autopilot, Entra ID, Defender, Purview, PowerShell
+- Twitter handle: `@eriteach`
+- Schema.org Person and WebSite markup
+- Open Graph and Twitter Card meta tags
+- Sitemap at `/sitemap.xml`
+
+## Security Configuration
+
+**The site has enterprise-grade security headers (configured in `static/_headers` and `netlify.toml`):**
+
+| Header | Purpose |
+|--------|---------|
+| Strict-Transport-Security | HSTS - forces HTTPS (2 years, preload) |
+| Content-Security-Policy | Prevents XSS, injection attacks |
+| X-Frame-Options: DENY | Prevents clickjacking |
+| X-Content-Type-Options | Prevents MIME sniffing |
+| Cross-Origin-*-Policy | Isolates cross-origin resources |
+| Permissions-Policy | Disables unused browser APIs |
+
+**DO NOT modify security headers unless you understand CSP implications.**
+
+If adding external resources (fonts, analytics, CDN), update the CSP in both:
+- `static/_headers` (line ~20)
+- `netlify.toml` (headers section)
+
+**Current CSP allows:**
+- `'self'` - same origin
+- `'unsafe-inline'` - required for Hugo/PaperMod theme
+- Google Analytics domains
+- Google Fonts
 
 ## Example - What NOT to Write
 
