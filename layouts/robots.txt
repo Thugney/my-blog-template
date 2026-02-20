@@ -1,0 +1,59 @@
+# Robots.txt for blog.eriteach.com
+# Optimized for search engine indexing
+
+# Main search engines - full access
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /og-default.png
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Generic crawler rules
+User-agent: *
+{{- if hugo.IsProduction | or (eq site.Params.env "production") }}
+Allow: /
+{{- else }}
+Disallow: /
+{{- end }}
+Crawl-delay: 2
+
+# Disallow administrative and non-content paths
+Disallow: /cdn-cgi/
+Disallow: /*.json$
+
+# Sitemaps - critical for SEO
+Sitemap: {{ "sitemap.xml" | absURL }}
+Sitemap: {{ "en/sitemap.xml" | absURL }}
+Sitemap: {{ "sitemap.xml" | absURL }}
+
+# Host directive (for Yandex)
+Host: {{ site.BaseURL }}

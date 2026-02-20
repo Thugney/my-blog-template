@@ -2,9 +2,11 @@
 title: "Auto-Update Firefox with Intune Proactive Remediation"
 date: 2026-02-01
 draft: false
-tags: ["intune", "proactive-remediation", "powershell", "firefox"]
+tags: ["intune", "proactive-remediation", "powershell", "firefox", "endpoint-management"]
 categories: ["How-To"]
 summary: "Use Intune proactive remediation to keep Firefox updated by checking versions and auto-installing updates."
+description: "Intune proactive remediation scripts to detect outdated Firefox versions and automatically install updates. Includes detection and remediation PowerShell scripts."
+keywords: ["Intune proactive remediation", "Firefox auto-update", "endpoint management", "PowerShell remediation", "browser update automation", "Intune scripts", "Firefox enterprise management"]
 ---
 
 ## The Problem

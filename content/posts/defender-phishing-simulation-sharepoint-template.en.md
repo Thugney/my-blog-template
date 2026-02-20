@@ -2,9 +2,11 @@
 title: "Setting Up a Phishing Simulation with Defender Attack Simulation Training"
 date: 2026-01-31
 draft: false
-tags: ["defender", "security", "how-to", "attack-simulation"]
+tags: ["defender", "security", "attack-simulation", "microsoft-365", "phishing"]
 categories: ["How-To"]
 summary: "How to create and deploy a realistic SharePoint phishing simulation using Microsoft Defender for Office 365 Attack Simulation Training."
+description: "Create realistic phishing simulations using Microsoft Defender for Office 365 Attack Simulation Training. Includes SharePoint mass deletion template and deployment steps."
+keywords: ["Defender attack simulation", "phishing simulation training", "Microsoft 365 security", "SharePoint phishing template", "security awareness training", "Defender for Office 365", "simulated phishing attack"]
 ---
 
 ## The Scenario

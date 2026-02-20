@@ -2,9 +2,11 @@
 title: "Remove Unauthorized Apps with Intune Proactive Remediation"
 date: 2026-02-01
 draft: false
-tags: ["intune", "proactive-remediation", "powershell", "compliance"]
+tags: ["intune", "proactive-remediation", "powershell", "compliance", "app-management"]
 categories: ["How-To"]
 summary: "Use Intune Proactive Remediation to detect and remove apps users installed when they had admin rights."
+description: "Intune proactive remediation scripts to detect and remove unauthorized applications from managed devices. Clean up legacy software installed when users had local admin privileges."
+keywords: ["remove unauthorized apps Intune", "proactive remediation app removal", "Intune app cleanup", "unauthorized software detection", "PowerShell app removal script", "Intune compliance remediation", "legacy app cleanup"]
 ---
 
 ## The Problem

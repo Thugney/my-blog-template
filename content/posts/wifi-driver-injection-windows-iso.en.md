@@ -2,9 +2,11 @@
 title: "Inject WiFi Drivers into Windows ISO for Smoother Resets"
 date: 2026-02-01
 draft: false
-tags: ["intune", "powershell", "autopilot", "deployment"]
+tags: ["intune", "powershell", "autopilot", "deployment", "drivers", "windows-11"]
 categories: ["How-To"]
 summary: "No WiFi during Windows setup after reset? Inject drivers into the ISO so school staff can handle resets without IT."
+description: "PowerShell script to inject HP WiFi drivers (Realtek, Intel AX211) into Windows 11 install.wim. Enables network connectivity during Autopilot enrollment after device reset."
+keywords: ["Windows ISO driver injection", "HP WiFi drivers", "DISM add-driver", "Autopilot network", "install.wim modification", "Windows deployment", "Realtek WiFi driver", "Intel AX211 driver"]
 ---
 
 ## The Problem

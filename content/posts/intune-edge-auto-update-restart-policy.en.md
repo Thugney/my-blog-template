@@ -2,9 +2,11 @@
 title: "Keep Edge Updated with Intune Auto-Restart Policy"
 date: 2026-02-01
 draft: false
-tags: ["intune", "microsoft-edge", "how-to"]
+tags: ["intune", "microsoft-edge", "browser-management", "security", "endpoint-management"]
 categories: ["How-To"]
 summary: "Configure Intune to auto-update and restart Microsoft Edge with user-friendly notifications."
+description: "Configure Microsoft Intune to automatically update and restart Edge browsers with user-friendly notifications. Keeps browsers patched and Defender security recommendations satisfied."
+keywords: ["Edge auto-update Intune", "browser update policy", "Microsoft Edge management", "Intune browser settings", "Edge restart notification", "browser security patches", "Defender browser recommendations"]
 ---
 
 ## The Problem

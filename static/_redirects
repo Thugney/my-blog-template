@@ -1,0 +1,10 @@
+# Netlify Redirects for blog.eriteach.com
+
+# Redirect www to non-www (canonical)
+https://www.blog.eriteach.com/* https://blog.eriteach.com/:splat 301!
+
+# Language-specific redirects for deep linking
+/posts/* /en/posts/:splat 302
+
+# Redirect old URLs if any (add as needed)
+# /old-path/* /new-path/:splat 301

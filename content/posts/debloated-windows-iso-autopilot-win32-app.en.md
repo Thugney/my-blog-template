@@ -2,9 +2,11 @@
 title: "Create Debloated Windows 11 ISOs with WiFi Drivers for Autopilot"
 date: 2026-02-19
 draft: false
-tags: ["intune", "autopilot", "powershell", "windows-11"]
+tags: ["intune", "autopilot", "powershell", "windows-11", "deployment", "bloatware-removal"]
 categories: ["How-To"]
 summary: "Build clean Windows 11 ISOs with bloatware removed, HP WiFi drivers injected, and OOBE skipped - plus a Win32 app for Intune resets."
+description: "Step-by-step guide to creating debloated Windows 11 ISOs with 119+ apps removed, HP WiFi drivers injected, and registry tweaks applied. Includes Win32 app for Intune-managed device resets."
+keywords: ["debloated Windows 11", "Windows ISO customization", "remove Windows bloatware", "HP WiFi drivers", "Autopilot deployment", "Intune Win32 app", "DISM image optimization", "Windows 11 Education", "enterprise deployment"]
 ---
 
 ## The Problem

@@ -2,9 +2,11 @@
 title: "Upload Custom ADMX Templates to Intune"
 date: 2026-02-01
 draft: false
-tags: ["intune", "admx", "how-to", "firefox", "zoom"]
+tags: ["intune", "admx", "group-policy", "firefox", "zoom", "endpoint-management"]
 categories: ["How-To"]
 summary: "How to import custom ADMX/ADML files into Intune for third-party apps like Firefox and Zoom."
+description: "Step-by-step guide to importing custom ADMX and ADML policy templates into Microsoft Intune. Configure third-party apps like Firefox and Zoom using familiar Group Policy settings."
+keywords: ["Intune ADMX import", "custom ADMX templates", "Firefox policy Intune", "Zoom group policy", "Intune configuration profiles", "ADML files Intune", "third-party app management"]
 ---
 
 ## The Problem

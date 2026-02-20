@@ -2,9 +2,11 @@
 title: "M365 Apps Not Updating? How Competing Update Policies Create a Security Blind Spot"
 date: 2026-02-17
 draft: false
-tags: ["intune", "how-to", "troubleshooting", "device-management"]
+tags: ["intune", "troubleshooting", "microsoft-365-apps", "security", "cloud-update"]
 categories: ["Troubleshooting"]
-summary: "How conflicting Intune Administrative Templates, Cloud Update profiles, and deployment XML kept 465 devices behind on security patches — and how to fix it with a single management authority."
+summary: "How conflicting Intune Administrative Templates, Cloud Update profiles, and deployment XML kept 465 devices behind on security patches - and how to fix it with a single management authority."
+description: "Troubleshoot Microsoft 365 Apps update failures caused by conflicting Intune policies, Cloud Update profiles, and deployment XML. Learn how to consolidate to a single update management authority."
+keywords: ["M365 Apps not updating", "Office update conflict", "Intune update policy", "Cloud Update troubleshooting", "Microsoft 365 Apps update failure", "competing update policies", "Office security patches", "update channel conflict"]
 ---
 
 ## The Problem

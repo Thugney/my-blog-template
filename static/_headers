@@ -1,0 +1,70 @@
+# Netlify Headers for blog.eriteach.com
+# Security headers and deep linking support
+
+/*
+  # Security Headers
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+
+  # Cache control for HTML pages
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Static assets - long cache
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Favicon and manifest caching
+/favicon.png
+  Cache-Control: public, max-age=604800
+
+/site.webmanifest
+  Cache-Control: public, max-age=604800
+  Content-Type: application/manifest+json
+
+/browserconfig.xml
+  Cache-Control: public, max-age=604800
+  Content-Type: application/xml
+
+# RSS and sitemap
+/index.xml
+  Cache-Control: public, max-age=3600
+  Content-Type: application/rss+xml; charset=utf-8
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+  Content-Type: application/xml; charset=utf-8
+
+/robots.txt
+  Cache-Control: public, max-age=86400
+  Content-Type: text/plain; charset=utf-8
+
+# JSON for search
+/index.json
+  Cache-Control: public, max-age=3600
+  Content-Type: application/json; charset=utf-8
+
+# Deep linking - allow crawlers and social previews
+/posts/*
+  X-Robots-Tag: index, follow
+  Link: <https://blog.eriteach.com%{REQUEST_URI}>; rel="canonical"
+
+/en/posts/*
+  X-Robots-Tag: index, follow
+  Link: <https://blog.eriteach.com%{REQUEST_URI}>; rel="canonical"
+
+# OG image
+/og-default.png
+  Cache-Control: public, max-age=604800
+  X-Content-Type-Options: nosniff

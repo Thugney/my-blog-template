@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+  <msapplication>
+    <tile>
+      <square150x150logo src="/favicon.png"/>
+      <square310x310logo src="/favicon.png"/>
+      <TileColor>#0a9396</TileColor>
+    </tile>
+    <notification>
+      <polling-uri src="https://blog.eriteach.com/index.xml"/>
+      <frequency>60</frequency>
+      <cycle>1</cycle>
+    </notification>
+  </msapplication>
+</browserconfig>

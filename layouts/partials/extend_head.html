@@ -1,0 +1,170 @@
+{{- /* Enhanced SEO Meta Tags for blog.eriteach.com */ -}}
+
+{{- /* Web App Manifest for PWA */ -}}
+<link rel="manifest" href="/site.webmanifest">
+
+{{- /* Preconnect to external domains for performance */ -}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+{{- /* LinkedIn Article Meta Tags */ -}}
+{{- if .IsPage }}
+<meta property="article:author" content="https://linkedin.com/in/eriteach">
+<meta property="article:publisher" content="https://linkedin.com/in/eriteach">
+{{- end }}
+
+{{- /* Twitter Card enhancements */ -}}
+<meta name="twitter:creator" content="@eriteach">
+<meta name="twitter:domain" content="blog.eriteach.com">
+
+{{- /* Open Graph Image dimensions for better social previews */ -}}
+{{- if .Params.cover.image }}
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ with .Params.cover.alt }}{{ . }}{{ else }}{{ .Title }}{{ end }}">
+{{- else if site.Params.images }}
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ site.Title }}">
+{{- end }}
+
+{{- /* Additional SEO meta tags */ -}}
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta name="format-detection" content="telephone=no">
+
+{{- /* Language alternates for multilingual SEO */ -}}
+{{- if .IsTranslated }}
+{{- range .Translations }}
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+{{- end }}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+{{- end }}
+
+{{- /* Geo and location meta for local SEO (Norway-based) */ -}}
+<meta name="geo.region" content="NO">
+<meta name="geo.placename" content="Modum, Norway">
+
+{{- /* Author and publisher meta */ -}}
+<meta name="author" content="Robel Mehari">
+<meta name="publisher" content="Eriteach">
+
+{{- /* Mobile web app capabilities */ -}}
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Eriteach">
+
+{{- /* Microsoft Tile */ -}}
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="msapplication-tooltip" content="Eriteach - Microsoft Cloud Tech">
+<meta name="msapplication-starturl" content="/">
+
+{{- /* Security headers hint */ -}}
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+{{- /* JSON-LD for Person (author) - enhances Google Knowledge Panel */ -}}
+{{- if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://blog.eriteach.com/#author",
+  "name": "Robel Mehari",
+  "jobTitle": "Microsoft 365 Security Specialist",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Modum Kommune"
+  },
+  "url": "https://blog.eriteach.com",
+  "image": "https://blog.eriteach.com/images/robel-mehari.jpg",
+  "sameAs": [
+    "https://linkedin.com/in/eriteach",
+    "https://x.com/eriteach",
+    "https://github.com/Thugney",
+    "https://youtube.com/@eriteach"
+  ],
+  "knowsAbout": [
+    "Microsoft Intune",
+    "Windows Autopilot",
+    "Microsoft Entra ID",
+    "Microsoft Defender",
+    "Microsoft Purview",
+    "PowerShell",
+    "Endpoint Management",
+    "Cloud Security"
+  ]
+}
+</script>
+
+{{- /* WebSite schema for sitelinks search box */ -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://blog.eriteach.com/#website",
+  "url": "https://blog.eriteach.com",
+  "name": "Eriteach",
+  "description": "Practical solutions for Intune, Autopilot, Entra ID, Defender, and Purview",
+  "publisher": {
+    "@id": "https://blog.eriteach.com/#author"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://blog.eriteach.com/en/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  },
+  "inLanguage": ["en", "no"]
+}
+</script>
+{{- end }}
+
+{{- /* HowTo schema for tutorial posts */ -}}
+{{- if and .IsPage (in .Params.categories "How-To") }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": {{ .Title | jsonify }},
+  "description": {{ with .Description }}{{ . | jsonify }}{{ else }}{{ .Summary | plainify | jsonify }}{{ end }},
+  "author": {
+    "@type": "Person",
+    "name": "Robel Mehari",
+    "url": "https://linkedin.com/in/eriteach"
+  },
+  "datePublished": {{ .PublishDate.Format "2006-01-02" | jsonify }},
+  "dateModified": {{ .Lastmod.Format "2006-01-02" | jsonify }},
+  "publisher": {
+    "@type": "Person",
+    "name": "Robel Mehari"
+  }
+}
+</script>
+{{- end }}
+
+{{- /* TechArticle schema for technical posts */ -}}
+{{- if and .IsPage (not (in .Params.categories "How-To")) }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": {{ .Title | jsonify }},
+  "description": {{ with .Description }}{{ . | jsonify }}{{ else }}{{ .Summary | plainify | jsonify }}{{ end }},
+  "author": {
+    "@type": "Person",
+    "name": "Robel Mehari",
+    "url": "https://linkedin.com/in/eriteach"
+  },
+  "datePublished": {{ .PublishDate.Format "2006-01-02" | jsonify }},
+  "dateModified": {{ .Lastmod.Format "2006-01-02" | jsonify }},
+  "publisher": {
+    "@type": "Person",
+    "name": "Robel Mehari"
+  },
+  "proficiencyLevel": "Expert",
+  "dependencies": "Microsoft 365, Windows 11"
+}
+</script>
+{{- end }}

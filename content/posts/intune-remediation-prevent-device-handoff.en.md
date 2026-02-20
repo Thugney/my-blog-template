@@ -2,9 +2,11 @@
 title: "Stop Unauthorized Device Handoffs with Intune Remediations"
 date: 2026-02-01
 draft: false
-tags: ["intune", "powershell", "compliance"]
+tags: ["intune", "powershell", "compliance", "security", "device-management"]
 categories: ["How-To"]
 summary: "Prevent users from taking over colleagues' devices by restricting login to the Intune primary user only."
+description: "Intune remediation script that restricts device login to the assigned primary user. Prevents unauthorized device sharing and ensures proper offboarding procedures."
+keywords: ["Intune primary user restriction", "device handoff prevention", "Intune compliance script", "unauthorized device access", "device offboarding Intune", "login restriction PowerShell", "device security compliance"]
 ---
 
 ## The Problem

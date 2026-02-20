@@ -1,10 +1,15 @@
 baseURL = "https://blog.eriteach.com/"
 title = "Eriteach | Microsoft Cloud Tech"
 theme = "papermod"
+languageCode = "en"
+copyright = "© 2024-2026 Robel Mehari. All rights reserved."
 
 # Multilingual
 defaultContentLanguage = "no"
 defaultContentLanguageInSubdir = false
+
+# Enable sitemap with priority settings
+enableRobotsTXT = true
 
 [languages]
   [languages.en]
@@ -101,6 +106,50 @@ ShowAllPagesInArchive = true
 ShowFullTextinRSS = true
 displayFullLangName = true
 
+# Site-wide SEO keywords
+keywords = [
+  "Microsoft Intune",
+  "Windows Autopilot",
+  "Entra ID",
+  "Microsoft Defender",
+  "Microsoft Purview",
+  "Microsoft 365",
+  "endpoint management",
+  "device management",
+  "PowerShell automation",
+  "IT administration",
+  "enterprise security",
+  "cloud security",
+  "MDM",
+  "mobile device management",
+  "conditional access",
+  "identity management"
+]
+
+# Schema.org configuration for rich snippets
+[params.schema]
+publisherType = "Person"
+sameAs = [
+  "https://linkedin.com/in/eriteach",
+  "https://x.com/eriteach",
+  "https://github.com/Thugney",
+  "https://youtube.com/@eriteach"
+]
+
+# Social handles for Twitter Cards and Open Graph
+[params.social]
+twitter = "@eriteach"
+facebook_app_id = ""
+
+# Theme color for browsers and PWA
+[params.assets]
+favicon = "favicon.png"
+favicon16x16 = "favicon.png"
+favicon32x32 = "favicon.png"
+apple_touch_icon = "favicon.png"
+theme_color = "#0a9396"
+msapplication_TileColor = "#0a9396"
+
 # Social Icons
 [[params.socialIcons]]
   name = "linkedin"
@@ -122,21 +171,19 @@ displayFullLangName = true
   name = "rss"
   url = "/index.xml"
 
-# Favicon
-[params.assets]
-favicon = "favicon.png"
-favicon16x16 = "favicon.png"
-favicon32x32 = "favicon.png"
-
 # SEO - Default image for social sharing
 images = ["og-default.png"]
 
-# SEO - Site verification (add your codes here)
+# SEO - Site verification (add your codes here when you have them)
+# These enable Google Search Console and Bing Webmaster Tools
 [params.analytics.google]
 # SiteVerificationTag = "your-google-verification-code"
 
 [params.analytics.bing]
 # SiteVerificationTag = "your-bing-verification-code"
+
+[params.analytics.yandex]
+# SiteVerificationTag = "your-yandex-verification-code"
 
 # Search
 [params.fuseOpts]
@@ -148,9 +195,18 @@ threshold = 0.4
 minMatchCharLength = 0
 keys = ["title", "permalink", "summary", "content", "tags"]
 
-# Outputs
+# Outputs - includes sitemap for SEO
 [outputs]
 home = ["HTML", "RSS", "JSON"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML", "RSS"]
+term = ["HTML", "RSS"]
+
+# Sitemap configuration for search engines
+[sitemap]
+changefreq = "weekly"
+filename = "sitemap.xml"
+priority = 0.5
 
 # Syntax highlighting
 [markup.highlight]

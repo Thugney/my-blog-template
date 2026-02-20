@@ -2,9 +2,11 @@
 title: "Remove Firefox from All Devices with Intune Proactive Remediation"
 date: 2026-02-02
 draft: false
-tags: ["intune", "proactive-remediation", "powershell", "defender"]
+tags: ["intune", "proactive-remediation", "powershell", "defender", "browser-management"]
 categories: ["How-To"]
 summary: "Clean up unauthorized Firefox installations across your organization using Intune remediations."
+description: "PowerShell remediation script for Intune that detects and removes unauthorized Firefox installations. Includes Defender software inventory check and silent uninstall process."
+keywords: ["remove Firefox Intune", "browser standardization", "Intune Firefox uninstall", "proactive remediation browser", "Defender software inventory", "unauthorized browser removal", "enterprise browser management"]
 ---
 
 ## The Problem
