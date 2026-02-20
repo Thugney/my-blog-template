@@ -28,14 +28,28 @@
 [build.processing.images]
   compress = true
 
-# Headers for security and SEO
+# Comprehensive security headers
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
+    # HTTPS Enforcement (HSTS) - 2 years, preload eligible
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    # Prevent clickjacking
+    X-Frame-Options = "DENY"
+    # Prevent MIME sniffing
     X-Content-Type-Options = "nosniff"
+    # XSS Protection
     X-XSS-Protection = "1; mode=block"
+    # Referrer Policy
     Referrer-Policy = "strict-origin-when-cross-origin"
+    # Content Security Policy
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+    # Permissions Policy
+    Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+    # Cross-Origin policies
+    Cross-Origin-Embedder-Policy = "credentialless"
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Resource-Policy = "same-origin"
 
 [[headers]]
   for = "/sitemap.xml"
