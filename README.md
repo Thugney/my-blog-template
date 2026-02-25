@@ -1,3 +1,9 @@
+[![GitHub](https://img.shields.io/badge/GitHub-Thugney-181717?style=flat&logo=github)](https://github.com/Thugney)
+[![Blog](https://img.shields.io/badge/Blog-eriteach.com-0d9488?style=flat&logo=hugo)](https://blog.eriteach.com)
+[![YouTube](https://img.shields.io/badge/YouTube-Eriteach-FF0000?style=flat&logo=youtube)](https://www.youtube.com/@eriteach)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Eriteach-0A66C2?style=flat&logo=linkedin)](https://www.linkedin.com/in/eriteach/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # Hugo Blog Template - Microsoft Cloud Tech
 
 A bilingual (English/Norwegian) Hugo blog template focused on Microsoft cloud technologies: Intune, Autopilot, Entra ID, Defender, and Purview.
@@ -16,8 +22,8 @@ A bilingual (English/Norwegian) Hugo blog template focused on Microsoft cloud te
 
 ```bash
 # Clone this template
-git clone -b template https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd YOUR_REPO
+git clone https://github.com/Thugney/my-blog-template.git my-blog
+cd my-blog
 
 # Initialize the theme submodule
 git submodule update --init --recursive
