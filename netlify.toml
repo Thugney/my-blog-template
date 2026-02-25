@@ -66,12 +66,12 @@
   [headers.values]
     Content-Type = "application/manifest+json"
 
-# Redirects for canonical URLs
-[[redirects]]
-  from = "https://www.blog.eriteach.com/*"
-  to = "https://blog.eriteach.com/:splat"
-  status = 301
-  force = true
+# Redirects for canonical URLs (update with your domain)
+# [[redirects]]
+#   from = "https://www.yourdomain.com/*"
+#   to = "https://yourdomain.com/:splat"
+#   status = 301
+#   force = true
 
 # Pretty URLs
 [[redirects]]

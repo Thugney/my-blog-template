@@ -1,8 +1,8 @@
-baseURL = "https://blog.eriteach.com/"
-title = "Eriteach | Microsoft Cloud Tech"
+baseURL = "https://your-blog.example.com/"
+title = "Your Blog Title | Microsoft Cloud Tech"
 theme = "papermod"
 languageCode = "en"
-copyright = "© 2024-2026 Robel Mehari. All rights reserved."
+copyright = "© 2024-2026 Your Name. All rights reserved."
 
 # Multilingual
 defaultContentLanguage = "no"
@@ -20,12 +20,12 @@ enableRobotsTXT = true
       description = "Practical solutions for Intune, Autopilot, Entra ID, Defender, and Purview"
       [languages.en.params.profileMode]
         enabled = true
-        title = "Robel Mehari"
-        subtitle = "Microsoft 365 Security Specialist · Modum Kommune — Practical guides on Intune, Defender, Entra ID, Autopilot, and Purview."
-        imageUrl = "images/robel-mehari.jpg"
+        title = "Your Name"
+        subtitle = "Your Role · Your Organization — Practical guides on Intune, Defender, Entra ID, Autopilot, and Purview."
+        imageUrl = "images/profile.jpg"
         imageWidth = 150
         imageHeight = 150
-        imageTitle = "Robel Mehari"
+        imageTitle = "Your Name"
         [[languages.en.params.profileMode.buttons]]
           name = "Posts"
           url = "/en/posts/"
@@ -57,12 +57,12 @@ enableRobotsTXT = true
       description = "Praktiske løsninger for Intune, Autopilot, Entra ID, Defender og Purview"
       [languages.no.params.profileMode]
         enabled = true
-        title = "Robel Mehari"
-        subtitle = "Microsoft 365 Security Specialist · Modum Kommune — Praktiske guider for Intune, Defender, Entra ID, Autopilot og Purview."
-        imageUrl = "images/robel-mehari.jpg"
+        title = "Ditt Navn"
+        subtitle = "Din Rolle · Din Organisasjon — Praktiske guider for Intune, Defender, Entra ID, Autopilot og Purview."
+        imageUrl = "images/profile.jpg"
         imageWidth = 150
         imageHeight = 150
-        imageTitle = "Robel Mehari"
+        imageTitle = "Ditt Navn"
         [[languages.no.params.profileMode.buttons]]
           name = "Innlegg"
           url = "/posts/"
@@ -90,7 +90,7 @@ enableRobotsTXT = true
 pagerSize = 5
 
 [params]
-author = "Robel Mehari"
+author = "Your Name"
 env = "production"
 mainSections = ["posts"]
 ShowReadingTime = true
@@ -130,15 +130,14 @@ keywords = [
 [params.schema]
 publisherType = "Person"
 sameAs = [
-  "https://linkedin.com/in/eriteach",
-  "https://x.com/eriteach",
-  "https://github.com/Thugney",
-  "https://youtube.com/@eriteach"
+  "https://linkedin.com/in/your-linkedin",
+  "https://x.com/yourhandle",
+  "https://github.com/your-github"
 ]
 
 # Social handles for Twitter Cards and Open Graph
 [params.social]
-twitter = "@eriteach"
+twitter = "@yourhandle"
 facebook_app_id = ""
 
 # Theme color for browsers and PWA
@@ -153,19 +152,15 @@ msapplication_TileColor = "#0a9396"
 # Social Icons
 [[params.socialIcons]]
   name = "linkedin"
-  url = "https://linkedin.com/in/eriteach"
+  url = "https://linkedin.com/in/your-linkedin"
 
 [[params.socialIcons]]
   name = "x"
-  url = "https://x.com/eriteach"
+  url = "https://x.com/yourhandle"
 
 [[params.socialIcons]]
   name = "github"
-  url = "https://github.com/Thugney"
-
-[[params.socialIcons]]
-  name = "youtube"
-  url = "https://youtube.com/@eriteach"
+  url = "https://github.com/your-github"
 
 [[params.socialIcons]]
   name = "rss"
